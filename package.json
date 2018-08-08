@@ -1,5 +1,5 @@
 {
-  "name": "jquery-google-map",
+  "name": "mwi-jquery-google-map",
   "version": "1.0.0",
   "description": "MWI Google Map Integration",
   "main": "mwi.map.js",
