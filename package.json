@@ -1,0 +1,21 @@
+{
+  "name": "jquery-google-map",
+  "version": "1.0.0",
+  "description": "MWI Google Map Integration",
+  "main": "mwi.map.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MidwesternInteractive/jquery-google-map.git"
+  },
+  "keywords": [
+    "jquery",
+    "google",
+    "map"
+  ],
+  "author": "Midwestern Interactive",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MidwesternInteractive/jquery-google-map/issues"
+  },
+  "homepage": "https://github.com/MidwesternInteractive/jquery-google-map#readme"
+}
