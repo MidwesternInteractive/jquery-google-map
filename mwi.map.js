@@ -1,15 +1,11 @@
 /*
  * MWI Google Map Integration
  * copyright Midwestern Interactive 2018
- * author @ryandoss
  */
 
-(function($)
-{
-  $.fn.mwimap = function(d)
-  {
-    return this.each(function()
-    {
+(function($) {
+  $.fn.mwimap = function(d) {
+    return this.each(function() {
       var defaults = {
         locations: [
           {
@@ -74,10 +70,8 @@
       var map = new google.maps.Map(document.getElementById($(this).attr('id')), mapOptions);
 
       /* Add Route */
-      if(options.pathCoords != null)
-      {
-        for(i = 0; i < options.pathCoords.length; i++)
-        {
+      if (options.pathCoords != null) {
+        for (i = 0; i < options.pathCoords.length; i++) {
           flightPlanCoordinates.push(new google.maps.LatLng(options.pathCoords[i][0], options.pathCoords[i][1]));
         }
         var flightPath = new google.maps.Polyline({
@@ -95,20 +89,19 @@
       var infowindow = new google.maps.InfoWindow({ content: "loading..." });
 
       /* Add Markers */
-      for (i = 0; i < options.locations.length; i++)
-      {
+      for (i = 0; i < options.locations.length; i++) {
 
         /* If the marker has Longitute and Latitude display marker accordingly */
-        if(options.locations[i].lat != "" && options.locations[i].lng != ""){
+        if (options.locations[i].lat != "" && options.locations[i].lng != "") {
 
           var title  = options.locations[i].title;
           var info   = options.locations[i].info;
           
-          if(options.locations[i].icon !== "") {
+          if (options.locations[i].icon !== "") {
             var icon = options.locations[i].icon;
           }
           
-          var content = '<div class="infoWindow">'+title+'<br>'+info+'</div>';
+          var content = '<div class="infoWindow">'+title+info+'</div>';
           (function(content) {
             myLatlng = new google.maps.LatLng(options.locations[i].lat, options.locations[i].lng);
       
@@ -122,7 +115,7 @@
       
             methods.handleMarkerClick(marker, infowindow, content)
       
-            if(options.locations.length > 1){
+            if (options.locations.length > 1) {
               bounds.extend(myLatlng);
               map.fitBounds(bounds);
             } else {
@@ -131,24 +124,19 @@
           })(content);
 
         /* If no lng and lat were provided use the address : Only 11 can be converted */
-        }
-        else
-        {
+        } else {
 
           var geocoder   = new google.maps.Geocoder();
           var title  = options.locations[i].title;
           var info   = options.locations[i].info;
           var addr   = options.locations[i].address;
-          if(options.locations[i].icon != "") {
+          if (options.locations[i].icon != "") {
             var icon = options.locations[i].icon;
           }
         
-          (function(info, addr)
-          {
-            geocoder.geocode( {
-          
+          (function(info, addr) {
+            geocoder.geocode({
               'address': addr
-          
             }, function(results) {
           
               myLatlng = results[0].geometry.location;
@@ -160,11 +148,10 @@
                 title: title,
                 map: map
               });
-              var content = '<div class="infoWindow">'+title+'<br>'+info+'<br>'+addr+'</div>';
+              var content = '<div class="infoWindow">'+title+info+addr+'</div>';
               methods.handleMarkerClick(marker, infowindow, content)
           
-              if(options.locations.length > 1)
-              {
+              if (options.locations.length > 1) {
                 bounds.extend(myLatlng);
                 map.fitBounds(bounds);
               } else {
@@ -181,7 +168,7 @@
           map.fitBounds(bounds);
         });
 
-        google.maps.event.addListener(infowindow,'closeclick',function(){
+        google.maps.event.addListener(infowindow,'closeclick',function() {
           google.maps.event.clearListeners(window, 'resize');
           google.maps.event.addDomListener(window, 'resize', function() {
             map.fitBounds(bounds);

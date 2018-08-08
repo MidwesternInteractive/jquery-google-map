@@ -1,4 +1,4 @@
-# jquery-google-map
+# MWI jQuery Google Map
 MWI Google Map Integration
 
 ## Usage
@@ -38,4 +38,4 @@ Only 11 addresses can be geocoded. If you plan on having more than 11 markers yo
 ```
 
 ## Styling Info Window
-All infoWindows are wrapped in `div.infowindow`
+All Info Windows are wrapped in `div.infowindow`
